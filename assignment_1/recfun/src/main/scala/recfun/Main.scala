@@ -14,13 +14,33 @@ object Main {
   /**
    * Exercise 1
    */
-  def pascal(c: Int, r: Int): Int = ???
+  def pascal(c: Int, r: Int): Int = {
+    def isOnEdge(c: Int, r: => Int) : Boolean = ( (c == 0) || (c == r) ) 
+
+    if (isOnEdge(c, r)) 1
+    else (pascal(c-1, r-1) + pascal(c, r-1)) 
+}
+
 
   /**
    * Exercise 2
    */
-  def balance(chars: List[Char]): Boolean = ???
-
+  def balance(chars: List[Char]): Boolean = {
+    def isBalansed(x: Int): Boolean = (x == 0)
+    def guard(x: Int, xs: List[Char]): Boolean = ((x < 0) || xs.isEmpty)
+    
+    def loop(acc: Int, xs: List[Char]): Boolean = 
+      if (guard(acc, xs)) isBalansed(acc)
+      else (if (xs.head == '(') loop(acc + 1, xs.tail) 
+    		  else (if (xs.head == ')') loop(acc - 1, xs.tail)
+    		  			else loop(acc, xs.tail)
+		  			)
+  			)
+    
+    if (chars.isEmpty) true
+    else loop(0, chars)
+  }
+  
   /**
    * Exercise 3
    */
