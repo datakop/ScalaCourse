@@ -1,4 +1,3 @@
-.metadata/
 *.swp
 .DS_Store
 
@@ -6,6 +5,8 @@
 *.log
 
 # sbt specific
+.cache/
+.metadata/
 dist/*
 target/
 lib_managed/
