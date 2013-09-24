@@ -5,6 +5,7 @@
 *.log
 
 # sbt specific
+.worksheet/
 .cache/
 .metadata/
 dist/*
