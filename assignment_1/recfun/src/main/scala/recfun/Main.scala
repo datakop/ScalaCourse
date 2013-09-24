@@ -44,5 +44,14 @@ object Main {
   /**
    * Exercise 3
    */
-  def countChange(money: Int, coins: List[Int]): Int = ???
+  def countChange(money: Int, coins: List[Int]): Int = ???/*{
+    
+    def throughAll(acc: Int, root: Int, xs: List[Int]): Int = {
+      1
+      
+    }
+    
+    if (coins.isEmpty) 0
+    else throughAll(coins.head, coins.tail)
+  }*/
 }
