@@ -74,9 +74,13 @@ class FunSetSuite extends FunSuite {
    */
 
   trait TestSets {
+    val s0 = singletonSet(0)
     val s1 = singletonSet(1)
     val s2 = singletonSet(2)
     val s3 = singletonSet(3)
+    
+    val u0 = union(union(s1, s2), s3)
+    val u1 = union(u0, s0)
   }
 
   /**
@@ -140,4 +144,25 @@ class FunSetSuite extends FunSuite {
       assert(contains(s, 3), "filter 3")
     }
   }
+  
+  test("forall u0 and u1 x>=1") {
+    new TestSets {
+      val r0 = forall(u0, (x: Int) => x >= 1)
+      val r1 = forall(u1, (x: Int) => x >= 1)
+      assert(r0 === true, "forall 0")
+      assert(r1 === false, "forall 1")
+    }
+  }
+  
+  // TODO
+  test("exists u0 and u1 x==0") {
+    new TestSets {
+      val r0 = exists(u0, (x: Int) => x == 0)
+      val r1 = exists(u1, (x: Int) => x == 0)
+      assert(r0 === true, "exists 0")
+      assert(r1 === false, "exists 1")
+    }
+  }
+  
+  
 }
