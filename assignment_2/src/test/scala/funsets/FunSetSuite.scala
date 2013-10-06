@@ -154,15 +154,29 @@ class FunSetSuite extends FunSuite {
     }
   }
   
-  // TODO
+
   test("exists u0 and u1 x==0") {
     new TestSets {
       val r0 = exists(u0, (x: Int) => x == 0)
-      val r1 = exists(u1, (x: Int) => x == 0)
-      assert(r0 === true, "exists 0")
-      assert(r1 === false, "exists 1")
+      val r1 = exists(u1, (x: Int) => x == 1)
+      assert(r0 === false, "exists 0")
+      assert(r1 === true, "exists 1")
     }
   }
+
+  test("map u0 with x*x") {
+    new TestSets {
+      val r0 = map(u0, (x: Int) => x*x )
+
+
+      assert(contains(r0, 1), "contains 1*1")
+      assert(contains(r0, 4), "contains 2*2")
+      assert(contains(r0, 9), "contains 3*3")
+      assert(!contains(r0, 2), "not contains 2")
+      assert(!contains(r0, 3), "not contains 3")
+    }
+  }
+
   
   
 }

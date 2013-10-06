@@ -67,7 +67,6 @@ object FunSets {
    * that satisfies `p`.
    */
   def exists(s: Set, p: Int => Boolean): Boolean = {
-    // TODO
     def iter(a: Int): Boolean = {
       if (a > bound) false
       else if (s(a) && p(a)) true
@@ -79,7 +78,14 @@ object FunSets {
   /**
    * Returns a set transformed by applying `f` to each element of `s`.
    */
-  def map(s: Set, f: Int => Int): Set = ???
+  def map(s: Set, f: Int => Int): Set = {
+    def iter(acc: Set, a: Int): Set = {
+      if (a > bound ) acc
+      else if (s(a)) iter(union(acc, singletonSet(f(a))), a+1)
+      else iter(acc, a+1)
+    }
+    iter(singletonSet(10000), -bound)
+  }
 
   /**
    * Displays the contents of a set
